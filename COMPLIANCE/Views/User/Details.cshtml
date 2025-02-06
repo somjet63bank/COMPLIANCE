@@ -1,0 +1,120 @@
+﻿@model COMPLIANCE.Models.Entities.User
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="d-flex flex-column flex-column-fluid">
+    <!--begin::Toolbar-->
+    <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+        <!--begin::Toolbar container-->
+        <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
+            <!--begin::Page title-->
+            <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+                <!--begin::Title-->
+                <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">Details Users</h1>
+                <!--end::Title-->
+                <!--begin::Breadcrumb-->
+                <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-muted">
+                        <a href="/" class="text-muted text-hover-primary">Home</a>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item">
+                        <span class="bullet bg-gray-500 w-5px h-2px"></span>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-muted">Users</li>
+                    <!--end::Item-->
+                </ul>
+                <!--end::Breadcrumb-->
+            </div>
+            <!--end::Page title-->
+        </div>
+        <!--end::Toolbar container-->
+    </div>
+    <div id="kt_app_content" class="app-content flex-column-fluid">
+        <!--begin::Content container-->
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="card mb-5 mb-xl-8">
+                <div class="card-body py-3">
+                    <div>
+                        @*  <h4>MT_USER</h4>
+                        <hr /> *@
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.username)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.username)
+                            </dd>
+                            @*    <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.password)
+                            </dt>
+                            <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.password)
+                            </dd> *@
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.first_name)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.first_name)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.last_name)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.last_name)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.email)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.email)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.created_date)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.created_date)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.created_by)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.created_by)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.updated_date)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.updated_date)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.updated_by)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.updated_by)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.record_status)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.record_status)
+                            </dd>
+                        </dl>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

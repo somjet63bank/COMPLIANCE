@@ -1,0 +1,177 @@
+﻿@model COMPLIANCE.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+<div class="d-flex flex-column flex-column-fluid">
+    <!--begin::Toolbar-->
+    <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+        <!--begin::Toolbar container-->
+        <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
+            <!--begin::Page title-->
+            <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+                <!--begin::Title-->
+                <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">Create User</h1>
+                <!--end::Title-->
+                <!--begin::Breadcrumb-->
+                <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-muted">
+                        <a href="/" class="text-muted text-hover-primary">Home</a>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item">
+                        <span class="bullet bg-gray-500 w-5px h-2px"></span>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-muted">Users</li>
+                    <!--end::Item-->
+                </ul>
+                <!--end::Breadcrumb-->
+            </div>
+            <!--end::Page title-->
+        </div>
+        <!--end::Toolbar container-->
+    </div>
+    <!--end::Toolbar-->
+    <!--begin::Content-->
+    <div id="kt_app_content" class="app-content flex-column-fluid">
+        <!--begin::Content container-->
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="card mb-5 mb-xl-8">
+                <div class="card-body py-3">
+                    <form id="form_submit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group mb-5">
+                            <label asp-for="@Model.User.username" class="form-label required"></label>
+                            <input asp-for="@Model.User.username" class="form-control" />
+                            <span asp-validation-for="@Model.User.username" class="text-danger"></span>
+                        </div>
+                        <div class="form-grou mb-5">
+                            <label asp-for="@Model.User.password" class="form-label required"></label>
+                            <input type="password" asp-for="@Model.User.password" class="form-control" />
+                            <span asp-validation-for="@Model.User.password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-5">
+                            <label asp-for="@Model.User.first_name" class="form-label required"></label>
+                            <input asp-for="@Model.User.first_name" class="form-control" />
+                            <span asp-validation-for="@Model.User.first_name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-5">
+                            <label asp-for="@Model.User.last_name" class="form-label required"></label>
+                            <input asp-for="@Model.User.last_name" class="form-control" />
+                            <span asp-validation-for="@Model.User.last_name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-5">
+                            <label asp-for="@Model.User.email" class="form-label required"></label>
+                            <input asp-for="@Model.User.email" class="form-control" />
+                            <span asp-validation-for="@Model.User.email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-5">
+                            <div class="d-flex">
+                                <!--begin::Label-->
+                                <div class="fw-semibold me-5">
+                                    <label class="fs-6">Roles</label>
+                                </div>
+                                <!--end::Label-->
+                                <!--begin::Checkboxes-->
+                                <div class="d-flex">
+                                    <!--begin::Checkbox-->
+                                    @if (Model != null)
+                                    {
+                      
+                                            @foreach (var item in Model?.Roles)
+                                            {
+                                                <label class="form-check form-check-custom form-check-solid me-10">
+                                                    <input class="form-check-input h-20px w-20px" type="checkbox" name="roles" value="@item.id" />
+                                                    <span class="form-check-label fw-semibold">@item.role_name</span>
+                                                </label>
+                                            }
+                                        
+                                    }
+                                </div>
+                                <!--end::Checkboxes-->
+                            </div>
+                            <!--end::Actions-->
+                        </div>
+                        <div class="form-group gap-2 d-flex align-items-center">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            $('#form_submit').on('submit', function (e) {
+                e.preventDefault();
+                const username = $('#User_username').val();
+                const password = $('#User_password').val();
+                const first_name = $('#User_first_name').val();
+                const last_name = $('#User_last_name').val();
+                const email = $('#User_email').val();
+                var model = {
+                    username: username,
+                    password: password,
+                    first_name: first_name,
+                    last_name: last_name,
+                    email: email,
+                    role_list: [],
+                    roles: ""
+                };
+
+                $('input[name="roles"]').each(function () {
+                    if ($(this).is(':checked')) {
+                        model.role_list.push($(this).val())
+                    }
+                });
+                if (model.role_list) {
+                    model.roles = model.role_list.join(",");
+                }
+                model.__RequestVerificationToken = $('#form_submit input[name=__RequestVerificationToken]').val();
+                $.ajax({
+                    type: 'POST',
+                    url: "../User/Create",
+                    data: JSON.stringify(model),
+                    contentType: "application/json",
+                    success: function (result) {
+                        if (result.isSuccess) {
+                            Swal.fire({
+                                text: "Success",
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn btn-primary"
+                                }
+                            }).then(function (result) {
+                                if (result.isConfirmed) {
+                                    location.href = "/User/Index";
+                                }
+                            });
+                        }
+                    },
+                    error: function (err) {
+                        // Swal.close()
+                        // Swal.fire({
+                        //     type: 'error',
+                        //     title: 'Oops...',
+                        //     text: err,
+                        // })
+                    }
+                });
+            });
+        });
+    </script>
+}
