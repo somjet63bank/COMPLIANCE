@@ -1,5 +1,5 @@
 ﻿body {
-    font-family: "Prompt", sans-serif;
+    font-family: 'Kanit', sans-serif;
 }
 /*.app-header {
     background-color: #7ce0d3 !important;
@@ -15,21 +15,46 @@
 }*/
 
 .app-header {
-    background-color: #59a932 !important;
+    background-color: white !important;
 }
 
 #kt_header_user_menu_toggle i {
-    color: #e0ec88;
+    color: black;
 }
 
 .app-header-menu .menu > .menu-item > .menu-link > .menu-icon i {
-    color: #e0ec88 !important;
+    color: black 
 }
+.app-header-menu .menu > .menu-item > .menu-link > .menu-icon i:hover {
+    color: white 
+}
+.app-header-menu .menu > .menu-item > .menu-link:focus > .menu-icon i,
+.app-header-menu .menu > .menu-item > .menu-link:active > .menu-icon i {
+    color: white ; /* เปลี่ยนเป็นสีเขียวเมื่อกด */
+}
+/* เปลี่ยนสีไอคอนเมื่อ active */
+.menu-item .menu-link.active .menu-icon i {
+    color: white ; /* เปลี่ยนเป็นสีน้ำเงิน */
+}
+
+/* เปลี่ยนสีข้อความเมื่อ active */
+.menu-item .menu-link.active .menu-title {
+    color: white ;
+}
+
+/* ถ้าต้องการให้มีพื้นหลังเมื่อ active */
+.menu-item .menu-link.active {
+    background-color: gray ;
+    border-radius: 5px;
+
+}
+
+
 .app-header-menu .menu > .menu-item > .menu-link > .menu-title {
-    color: white !important;
+    color: black
 }
 .app-header-menu.drawer .menu > .menu-item > .menu-link > .menu-title, .app-header-menu.drawer .menu > .menu-item > .menu-link > .menu-icon i {
-    color: #59a932 !important;
+    color: black 
 }
 
 #kt_app_header_wrapper.scroll-x {

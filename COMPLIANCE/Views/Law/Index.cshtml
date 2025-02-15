@@ -1,0 +1,319 @@
+﻿@model IEnumerable<COMPLIANCE.Models.Entities.User>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutTheme.cshtml";
+}
+
+<div class="d-flex flex-column flex-column-fluid pt-1">
+    <!--begin::Toolbar-->
+    <div id="kt_app_toolbar" class="app-toolbar py-1 py-lg-2 mb-3" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);background: white;z-index: 90;">
+        <!--begin::Toolbar container-->
+        <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
+            <!--begin::Page title-->
+            <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+                <!--begin::Title-->
+                @* <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">Users</h1> *@
+                <!--end::Title-->
+                <!--begin::Breadcrumb-->
+                <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-muted">
+                        <a href="/Home/Index" class="text-muted text-hover-primary">Home</a>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item">
+                        @* <span class="bullet bg-gray-500 w-5px h-2px"></span> *@
+                        /
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-muted">All New Law</li>
+                    <!--end::Item-->
+                </ul>
+                <!--end::Breadcrumb-->
+            </div>
+            <!--end::Page title-->
+        </div>
+        <!--end::Toolbar container-->
+    </div>
+    <!--end::Toolbar-->
+    <!--begin::Content-->
+    <div id="kt_app_content" class="app-content flex-column-fluid mt-5">
+        <!--begin::Content container-->
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="card mb-5 mb-xl-8" style="background-color: rgb(242 244 248);box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);">
+                <!--begin::Header-->
+                <div class="card-header border-0 pt-5">
+                    <h2 class="align-items-start flex-column">
+                        <span class="fw-bold fs-3 mb-1" style="color: rgb(0 97 175)">ค้นหา (Search)</span>
+                    </h2>
+
+                </div>
+                <div class="py-0 mx-5" style="position: relative">
+                    <hr class="absolute w-1/4 h-1 bg-orange-default rounded border border-orange-light" style="position: absolute;width: 25%;background-color: rgb(241 90 34);height: 5px; opacity: 1">
+                    <hr class="w-full bg-gray-light h-1 border rounded border-gray-light" style="height: 5px;background-color: rgb(228 231 233)">
+                </div>
+                <div class="p-5 border-0 pt-5">
+                  
+                    <div class="row mb-5">
+                        <div class="form-group col-3">
+                            <label class="form-label">หมายเลขเอกสาร (Document No.)</label>
+                            <input class="form-control" />
+                            
+                        </div>
+                        <div class="form-group col-3">
+                            <label class="form-label">ประเภทกฎหมายหลัก (Main Law Category)</label>
+                            <select class="form-control">
+                                <option value="">Select an option</option>
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group col-2">
+                            <label class="form-label">ชื่อกฎหมาย (Name of the Law)</label>
+                            <input class="form-control" />
+                            
+                        </div>
+                        <div class="form-group col-1">
+                            <label class="form-label">สถานะ(Status)</label>
+                            <select class="form-control">
+                                <option value="">Select an option</option>
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group  col-3">
+                            <label class="form-label">ค้นหาด้วยคำ (Search Keywords)</label>
+                            <input class="form-control" />
+
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="form-group col-3">
+                            <label class="form-label">วันที่มีผลบังคับใช้ (Effective date)</label>
+                            <hr class="my-1" />
+                            <div class="row">
+                                <div class="col-6">   <label class="form-label">เริ่ม (From)</label><input class="form-control" /></div>
+                                <div class="col-6">   <label class="form-label">สิ้นสุด (To)</label><input class="form-control" /></div>
+                            </div>
+                           
+
+                        </div>
+                        <div class="form-group col-3">
+                            <label class="form-label">วันที่สร้าง (Create Date)</label>
+                            <hr class="my-1" />
+                            <div class="row">
+                                <div class="col-6">   <label class="form-label">เริ่ม (From)</label><input class="form-control" /></div>
+                                <div class="col-6">   <label class="form-label">สิ้นสุด (To)</label><input class="form-control" /></div>
+                            </div>
+                        </div>
+                       
+                       
+                    </div>
+                    <div class="d-flex" style="justify-content: end;">
+                        <a href="/Law/Create" type="button" class="btn btn-warning py-2" style="background-color: rgb(241 90 34);color: white;margin-right: 10px">
+                            <i class="ki-duotone ki-plus fs-2" style="color: white"></i> <b>Create New Law</b>
+                        </a>
+                        <button type="button" class="btn btn-warning py-2" style="background-color: rgb(241 90 34);color: white;margin-right: 10px">
+							<i class="fas fa-search fs-2" style="color: white"></i><b>Search</b>
+                        </button>
+                        <button type="button" class="btn btn-warning py-2" style="background-color: rgb(241 90 34);color: white;margin-right: 10px">
+                            <i class="fas fa-eraser fs-2" style="color: white;"></i>
+							<b>Clear Search</b>
+                        </button>
+                    </div>
+                    
+                </div>
+
+                
+                <!--end::Header-->
+                <!--begin::Body-->
+                <div class="card-body py-3">
+                   
+                </div>
+                <!--begin::Body-->
+            </div>
+            <div class="card mb-5 mb-xl-8" style="background-color: rgb(242 244 248);box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);">
+                <!--begin::Header-->
+                <div class="card-header border-0 pt-5">
+                    <h2 class="align-items-start flex-column">
+                        <span class="fw-bold fs-3 mb-1" style="color: rgb(0 97 175)">ข้อมูลกฎหมายใหม่ (All new law)</span>
+                    </h2>
+                    
+                </div>
+                <div class="py-0 mx-5" style="position: relative">
+                    <hr class="absolute w-1/4 h-1 bg-orange-default rounded border border-orange-light" style="position: absolute;width: 25%;background-color: rgb(241 90 34);height: 5px; opacity: 1">
+                    <hr class="w-full bg-gray-light h-1 border rounded border-gray-light" style="height: 5px;background-color: rgb(228 231 233)">
+                </div>
+                <!--end::Header-->
+                <!--begin::Body-->
+                <div class="card-body py-3">
+                    <!--begin::Table container-->
+                    <div class="table-responsive">
+                        <table id="kt_datatable_one_configuration" class="table  table-bordered gy-5" style="background-color:white !important">
+                            <thead>
+                                <tr class="fw-semibold fs-6 text-muted">
+                                    <th>หมายเลขเอกสาร (Document No.)</th>
+                                    <th>กลุ่มกฎหมายหลัก (Main Law Category)</th>
+                                    <th>ชื่อกฎหมาย (Name of Law)</th>
+                                    <th>วัตถุประสงค์ในการส่งข้อมูล (Objective of Sending)</th>
+                                    <th>วันที่มีผลบังคับใช้ (Effective Date)</th>
+                                    <th>วันที่สร้างข้อมูล (Create Date)</th>
+                                    <th>
+                                        Status
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>System Architect</td>
+                                    <td>Edinburgh</td>
+                                    <td>61</td>
+                                    <td>2011/04/25</td>
+                                    <td>$320,800</td>
+                                    <td>Complete</td>
+                                </tr>
+                                
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                    <!--end::Table container-->
+                </div>
+                <!--begin::Body-->
+            </div>
+        </div>
+        <!--end::Content container-->
+    </div>
+    <!--end::Content-->
+</div>
+<div class="modal fade" id="kt_modal_create_app" tabindex="-1" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-900px">
+        <!--begin::Modal content-->
+        <div class="modal-content">
+            <!--begin::Modal header-->
+            <div class="modal-header">
+                <!--begin::Modal title-->
+                <h2>Create App</h2>
+                <!--end::Modal title-->
+                <!--begin::Close-->
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="ki-duotone ki-cross fs-1">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                    </i>
+                </div>
+                <!--end::Close-->
+            </div>
+            <!--end::Modal header-->
+            <!--begin::Modal body-->
+            <div class="modal-body py-lg-10 px-lg-10">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-10">
+                        <label for="username" class="required form-label">Username</label>
+                        <input type="text" class="form-control form-control-solid" placeholder="" />
+                        <span asp-validation-for="@Model.First().username" class="text-danger"></span>
+                    </div>
+                    @* <div class="form-group">
+                    <label asp-for="username" class="control-label"></label>
+                    <input asp-for="username" class="form-control" />
+                    <span asp-validation-for="username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="password" class="control-label"></label>
+                    <input asp-for="password" class="form-control" />
+                    <span asp-validation-for="password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="first_name" class="control-label"></label>
+                    <input asp-for="first_name" class="form-control" />
+                    <span asp-validation-for="first_name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="last_name" class="control-label"></label>
+                    <input asp-for="last_name" class="form-control" />
+                    <span asp-validation-for="last_name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="position" class="control-label"></label>
+                    <input asp-for="position" class="form-control" />
+                    <span asp-validation-for="position" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="email" class="control-label"></label>
+                    <input asp-for="email" class="form-control" />
+                    <span asp-validation-for="email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="created_date" class="control-label"></label>
+                    <input asp-for="created_date" class="form-control" />
+                    <span asp-validation-for="created_date" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="created_by" class="control-label"></label>
+                    <input asp-for="created_by" class="form-control" />
+                    <span asp-validation-for="created_by" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="updated_date" class="control-label"></label>
+                    <input asp-for="updated_date" class="form-control" />
+                    <span asp-validation-for="updated_date" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="updated_by" class="control-label"></label>
+                    <input asp-for="updated_by" class="form-control" />
+                    <span asp-validation-for="updated_by" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="record_status" class="control-label"></label>
+                    <input asp-for="record_status" class="form-control" />
+                    <span asp-validation-for="record_status" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="entity_code" class="control-label"></label>
+                    <input asp-for="entity_code" class="form-control" />
+                    <span asp-validation-for="entity_code" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="dept_code" class="control-label"></label>
+                    <input asp-for="dept_code" class="form-control" />
+                    <span asp-validation-for="dept_code" class="text-danger"></span>
+                    </div> *@
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#kt_datatable_zero_configuration").DataTable({
+
+               "lengthChange": false, // ปิดการเลือกจำนวนแถวต่อหน้า
+                   "info": false // ปิดข้อความ
+
+            });
+            $("#kt_datatable_one_configuration").DataTable({
+                "lengthChange": false, // ปิดการเลือกจำนวนแถวต่อหน้า
+                   "info": false // ปิดข้อความ
+
+            });
+        });
+
+    </script>
+}

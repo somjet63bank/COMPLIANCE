@@ -1,5 +1,4 @@
-﻿
-<!--begin::Menu wrapper-->
+﻿<!--begin::Menu wrapper-->
 <div class="app-header-menu app-header-mobile-drawer align-items-stretch" data-kt-drawer="true"
      data-kt-drawer-name="app-header-menu" data-kt-drawer-activate="{default: true, lg: false}"
      data-kt-drawer-overlay="true" data-kt-drawer-width="200px" data-kt-drawer-direction="end"
@@ -12,32 +11,45 @@
 
         <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"
              class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
-            <a class="menu-link p-1" href="#">
+            <a class="menu-link p-1 py-2" href="/Home/Index">
                 <span class="menu-icon mx-1"><i class="ki-solid ki-home fs-2"></i></span>
-                <span class="menu-title fw-semibold text-gray-800">Dashboard</span>
+                <span class="menu-title fw-semibold">หน้าหลัก</span>
             </a>
         </div>
         <!--begin:Menu item-->
         <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"
              class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
             <!--begin:Menu link-->
-            <span class="menu-link p-1">
+            <span class="menu-link p-1 py-2" href="/Law/Index">
                 <span class="menu-icon mx-1"><i class="ki-solid ki-address-book fs-2"></i></span>
-                <span class="menu-title text-gray-800">ข้อมูลผู้ใช้งาน</span>
+                <span class="menu-title">ข้อมูลกฏหมาย</span>
                 @* <span class="menu-arrow"></span> *@
             </span>
             <!--end:Menu link-->
             <!--begin:Menu sub-->
-            <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-250px">
+            <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-250px" style="z-index: 110 !important">
                 <!--begin:Menu item-->
                 <div class="menu-item">
                     <!--begin:Menu link-->
-                    <a class="menu-link" href="/User/Index" data-kt-initialized="1"
+                    <a class="menu-link" href="/Law/Index" data-kt-initialized="1"
                        data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                        <span class="menu-icon">
-                            <i class="ki-solid ki-gear fs-2"></i>
-                        </span>
-                        <span class="menu-title">เพิ่ม/แก้ไข รายชื่อผู้ใช้งาน</span>
+                        @* <span class="menu-icon"> *@
+                        @*     <i class="ki-solid ki-gear fs-2"></i> *@
+                        @* </span> *@
+                        <span class="menu-title">สร้างกฏหมายใหม่</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <!--end:Menu item-->
+                <!--begin:Menu item-->
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link" href="/Law/Edit" data-kt-initialized="1"
+                       data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                        @* <span class="menu-icon"> *@
+                        @*     <i class="ki-solid ki-gear fs-2"></i> *@
+                        @* </span> *@
+                        <span class="menu-title">แก้ไขกฏหมายใหม่</span>
                     </a>
                     <!--end:Menu link-->
                 </div>
@@ -51,3 +63,33 @@
 
 </div>
 <!--end::Menu wrapper-->
+
+<script>
+    // ตรวจสอบ URL ปัจจุบัน
+    const currentPath = window.location.pathname
+    document.querySelectorAll('.menu-link').forEach(item => {
+        console.log('currentPath', currentPath)
+        // ตรวจสอบว่าลิงก์ตรงกับ URL หรือไม่
+        if (currentPath === item.getAttribute('href')) {
+            // เพิ่มคลาส active ถ้าลิงก์ตรงกับ URL ปัจจุบัน
+            item.classList.add('active');
+        }
+
+        item.addEventListener('click', function (event) {
+            event.preventDefault(); // ป้องกันการโหลดหน้าใหม่ทันที
+
+            // ลบ active จากทุกเมนู
+            document.querySelectorAll('.menu-link').forEach(link => link.classList.remove('active'));
+
+            // เพิ่ม active ให้เมนูที่ถูกเลือก
+            this.classList.add('active');
+
+            // เปลี่ยนหน้าไปที่ href ของลิงก์
+            const href = this.getAttribute('href');
+            if (href) {
+                window.location.href = href; // ไปยังหน้าใหม่
+            }
+        });
+    });
+</script>
+
