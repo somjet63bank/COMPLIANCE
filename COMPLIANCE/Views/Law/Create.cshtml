@@ -27,7 +27,7 @@
                         </button>
                     </h1>
                     <div id="kt_accordion_1_body_1" class="accordion-collapse collapse show" aria-labelledby="kt_accordion_1_header_1" data-bs-parent="#kt_accordion_1">
-                        <div class="accordion-body" style="background-color: rgb(242 244 248);"
+                        <div class="accordion-body" style="background-color: rgb(242 244 248);">
                             <form id="form_submit">
              
                                 <div class="form-group mb-5">
@@ -82,8 +82,9 @@
                                         <!--end::Input-->
                                     </div>
                                 </div>
-                                <div  id="kt_docs_repeater_basic">
- <div class="form-group mb-5">
+                                <!--begin::Repeater-->
+                                <div id="kt_docs_repeater_basic">
+                                    <div class="form-group mb-5">
 									<div class="row">
 										<!--begin::Label-->
 										<div class="fw-semibold col-3">
@@ -112,9 +113,7 @@
 
 									</div>
 								</div>
-
-                                <!--begin::Repeater-->
-                                <div id="kt_docs_repeater_basic">
+                
                                     <!--begin::Form group-->
                                     <div class="form-group">
                                         <div data-repeater-list="kt_docs_repeater_basic">
@@ -122,12 +121,15 @@
                                                 <div class="row align-items-center mb-3">
                                                     <!--begin::Label-->
                                                     <div class="fw-semibold col-3">
-                                                        <label class="fs-6"><div>กฎหมายหลักที่เกี่ยวข้อง</div><div>(Main Law Category)*</div></label>
+                                                        <label class="fs-6">
+                                                            <div>กฎหมายหลักที่เกี่ยวข้อง</div>
+                                                            <div>(Main Law Category)*</div>
+                                                        </label>
                                                     </div>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <div class="d-flex col-3">
-                                                        <select class="form-control">
+                                                    <div class="col-3">
+                                                        <select class="form-control" required>
                                                             <option value="">Select an option</option>
                                                             <option value="option1">Option 1</option>
                                                             <option value="option2">Option 2</option>
@@ -138,12 +140,15 @@
                                                     <!--end::Input-->
                                                     <!--begin::Label-->
                                                     <div class="fw-semibold col-2">
-                                                        <label class="fs-6"><div>กฎหมายย่อยที่เกี่ยวข้อง</div><div>(Sub Law Category)</div></label>
+                                                        <label class="fs-6">
+                                                            <div>กฎหมายย่อยที่เกี่ยวข้อง</div>
+                                                            <div>(Sub Law Category)</div>
+                                                        </label>
                                                     </div>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <div class="d-flex col-3">
-                                                        <select class="form-control">
+                                                    <div class="col-3">
+                                                        <select class="form-control" required>
                                                             <option value="">Select an option</option>
                                                             <option value="option1">Option 1</option>
                                                             <option value="option2">Option 2</option>
@@ -152,24 +157,21 @@
                                                         <span class="text-danger"></span>
                                                     </div>
                                                     <!--end::Input-->
+                                                    <!--begin::Delete Button-->
                                                     <div class="col-1">
-                                                        <a href="javascript:;" data-repeater-delete class="">
-                                                            <i class="fas fa-minus-circle" style="color: rgb(0 97 175);font-size: 30px;"></i>
-                                                        </a>
+                                                        <button type="button" data-repeater-delete class="btn btn-link p-0">
+                                                            <i class="fas fa-minus-circle text-primary" style="font-size: 30px;" aria-label="Remove"></i>
+                                                        </button>
                                                     </div>
+                                                    <!--end::Delete Button-->
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
                                     <!--end::Form group-->
-
                                 </div>
                                 <!--end::Repeater-->
-                                </div>
-                               
-
-                                
+ 
                                 <div class="form-group mb-5">
                                     <div class="row">
                                         <!--begin::Label-->
@@ -243,7 +245,7 @@
                                 </div>
                                 <!--end::Repeater-->
 
-                                  <div class="table-responsive">
+                                <div class="table-responsive">
                                     <table class="table  table-bordered gy-5" style="background-color:white !important">
                                         <thead>
                                             <tr class="fw-semibold fs-6 text-muted">
@@ -254,16 +256,7 @@
                                         </thead>
                                         <tbody>
                                             
-                                        </tbody>
-                                        @* <tfoot> *@
-                                        @*     <tr> *@
-                                        @*         <th>Name</th> *@
-                                        @*         <th>Position</th> *@
-                                        @*         <th>Office</th> *@
-                                        @*         <th>Age</th> *@
-
-                                        @*     </tr> *@
-                                        @* </tfoot> *@
+                                        </tbody>                
                                     </table>
                                 </div>
 
@@ -325,15 +318,7 @@
                                         </div>
                                        
                                     </div>
-                                    <!--end::Form group-->
-                                    <!--begin::Form group-->
-                                    @* <div class="form-group my-2"> *@
-                                    @*     <a href="javascript:;" data-repeater-create class="btn btn-light-primary"> *@
-                                    @*         <i class="ki-duotone ki-plus fs-3"></i> *@
-                                    @*         Add *@
-                                    @*     </a> *@
-                                    @* </div> *@
-                                    <!--end::Form group-->
+                                    <!--end::Form group-->    
                                 </div>
                                 <!--end::Repeater-->
 
@@ -436,9 +421,7 @@
                                             <label class="fs-6">
                                                 <div class="d-flex align-items-center">
                                                     เดิม (Local Language Previous Version)
-                                                    @* <button type="button" class="btn  btn-primary py-2 mx-3" style="background-color: rgb(2 132 199);color: white"> *@
-                                                    @*     Translate *@
-                                                    @* </button> *@
+                                                   
                                                 </div>
                                             </label>
                                         </div>
@@ -450,9 +433,7 @@
                                             <label class="fs-6">
                                                 <div class="d-flex align-items-center">
                                                     ใหม่ (Local Language New Version)
-                                                    @* <button type="button" class="btn  btn-primary py-2 mx-3" style="background-color: rgb(2 132 199);color: white"> *@
-                                                    @*     Translate *@
-                                                    @* </button> *@
+                                                   
                                                 </div>
                                             </label>
                                         </div>
@@ -460,7 +441,7 @@
                                         </textarea>
                                     </div>
                                 </div>
-                                 <div class="row">
+                                <div class="row">
                                     <div class="py-5 col-6" data-bs-theme="light">
                                         <div class="fw-semibold  mb-3">
                                             <label class="fs-6">
@@ -722,134 +703,109 @@
             </div>
             <!--end::Accordion-->
             <!--begin::Accordion-->
-            <div class="accordion" id="kt_accordion_2" >
-               
-
-                <div class="accordion-item mb-5" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);">
-                    <h1 class="accordion-header" id="kt_accordion_1_header_2" style="background-color: rgb(242 244 248)">
-                        <button style="color: rgb(0 97 175)" class="accordion-button fs-4 fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kt_accordion_1_body_2" aria-expanded="false" aria-controls="kt_accordion_1_body_2">
+            <div class="accordion" id="kt_accordion_2">
+                <div class="accordion-item mb-5 shadow">
+                    <h1 class="accordion-header" id="kt_accordion_1_header_2">
+                        <button class="accordion-button fs-4 fw-semibold collapsed text-primary bg-light" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#kt_accordion_1_body_2" aria-expanded="false"
+                                aria-controls="kt_accordion_1_body_2">
                             <hr class="absolute h-1/4 w-1 bg-orange-default rounded border border-orange-light"
                                 style="position: absolute; height: 45%; width: 5px; background-color: rgb(241, 90, 34); opacity: 1;">
-                            <b style="padding:10px 10px 10px 15px;">Compliance Committee Make Decission</b>
-                      
-						</button>
-
+                            <b class="ps-3">Compliance Committee Make Decision</b>
+                        </button>
                     </h1>
-                    <div id="kt_accordion_1_body_2" class="accordion-collapse collapse" aria-labelledby="kt_accordion_1_header_2" data-bs-parent="#kt_accordion_2">
-                        <div class="accordion-body" style="background-color: rgb(242 244 248);">
+                    <div id="kt_accordion_1_body_2" class="accordion-collapse collapse" aria-labelledby="kt_accordion_1_header_2"
+                         data-bs-parent="#kt_accordion_2">
+                        <div class="accordion-body bg-light">
                             <form id="form_submit">
+                                <!-- Relate Assessment -->
                                 <div class="form-group mb-5">
                                     <div class="row">
-                                        <!--begin::Label-->
                                         <div class="fw-semibold col-3">
-                                            <label class="fs-6">
-                                                <div>ประเมินความเกี่ยวข้อง</div><div>
-                                                    (Relate assessment)*
-                                                </div>
-                                            </label>
+                                            <label class="fs-6">ประเมินความเกี่ยวข้อง (Relate assessment)*</label>
                                         </div>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
                                         <div class="d-flex col-4 justify-content-between">
-                                            <div class="form-check form-switch ">
-                                                <input class="form-check-input" type="checkbox" id="option1" value="option1">
-                                                <label class="form-check-label" for="option1">
-                                                    เกี่ยวข้อง (Related)
-                                                </label>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="relate_option1" value="related">
+                                                <label class="form-check-label" for="relate_option1">เกี่ยวข้อง (Related)</label>
                                             </div>
-                                            <div class="form-check form-switch ">
-                                                <input class="form-check-input" type="checkbox" id="option2" value="option2">
-                                                <label class="form-check-label" for="option2">
-                                                    ไม่เกี่ยวข้อง (Not Related)
-                                                </label>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="relate_option2" value="not_related">
+                                                <label class="form-check-label" for="relate_option2">ไม่เกี่ยวข้อง (Not Related)</label>
                                             </div>
-                                            <span class="text-danger"></span>
                                         </div>
-                                        <!--end::Input-->
                                     </div>
                                 </div>
+
+                                <!-- Objective of Sending -->
                                 <div class="form-group mb-5">
                                     <div class="row">
-                                        <!--begin::Label-->
                                         <div class="fw-semibold col-3">
-                                            <label class="fs-6"><div>วัตถุประสงค์ในการส่งข้อมูล</div><div>(Objective of Sending)*</div></label>
+                                            <label class="fs-6">วัตถุประสงค์ในการส่งข้อมูล (Objective of Sending)*</label>
                                         </div>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
                                         <div class="col-9">
                                             <div class="form-check form-switch mb-3">
-                                                <input class="form-check-input" type="checkbox" id="option1" value="option1">
-                                                <label class="form-check-label" for="option1">
-                                                    เพื่อทราบ (For acknowledgement)
-                                                </label>
+                                                <input class="form-check-input" type="checkbox" id="objective_option1" value="acknowledgement">
+                                                <label class="form-check-label" for="objective_option1">เพื่อทราบ (For acknowledgement)</label>
                                             </div>
                                             <div class="form-check form-switch mb-3">
-                                                <input class="form-check-input" type="checkbox" id="option2" value="option2">
-                                                <label class="form-check-label" for="option2">
-                                                    เพื่อประเมิน (For assessment)
-                                                </label>
+                                                <input class="form-check-input" type="checkbox" id="objective_option2" value="assessment">
+                                                <label class="form-check-label" for="objective_option2">เพื่อประเมิน (For assessment)</label>
                                             </div>
-
-                                            <span class="text-danger"></span>
                                         </div>
-                                        <!--end::Input-->
                                     </div>
                                 </div>
+
+                                <!-- Reason for Not Related -->
                                 <div class="form-group mb-5">
                                     <div class="row">
-                                        <!--begin::Label-->
                                         <div class="fw-semibold col-3">
-                                            <label class="fs-6"><div>โปรดระบุเหตุผลกรณีไม่เกี่ยวข้อง</div><div>(Please identify reason to justify as "Not Related")*</div></label>
+                                            <label class="fs-6">โปรดระบุเหตุผลกรณีไม่เกี่ยวข้อง (Please identify reason to justify as "Not Related")*</label>
                                         </div>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
-                                        <div class="d-flex col-9">
-                                            <textarea class="form-control" rows="4" cols="50"></textarea>
-                                            <span class="text-danger"></span>
+                                        <div class="col-9">
+                                            <textarea class="form-control" rows="4"></textarea>
                                         </div>
-                                        <!--end::Input-->
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-
-              
             </div>
             <!--end::Accordion-->
+            <!--begin::Accordion-->
             <div class="accordion" id="kt_accordion_3">
-           
-                <div class="accordion-item" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);">
+                <div class="accordion-item shadow">
                     <h1 class="accordion-header" id="kt_accordion_1_header_3">
-                        <button style="color: rgb(0 97 175)" class="accordion-button fs-4 fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kt_accordion_1_body_3" aria-expanded="false" aria-controls="kt_accordion_1_body_3">
+                        <button class="accordion-button fs-4 fw-semibold collapsed text-primary bg-light" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#kt_accordion_1_body_3" aria-expanded="false"
+                                aria-controls="kt_accordion_1_body_3">
                             <hr class="absolute h-1/4 w-1 bg-orange-default rounded border border-orange-light"
                                 style="position: absolute; height: 45%; width: 5px; background-color: rgb(241, 90, 34); opacity: 1;">
-                            <b style="padding:10px 10px 10px 15px;">Proceed</b>
-
+                            <b class="ps-3">Proceed</b>
                         </button>
                     </h1>
-                    <div id="kt_accordion_1_body_3" class="accordion-collapse collapse" aria-labelledby="kt_accordion_1_header_3" data-bs-parent="#kt_accordion_3">
-                        <div class="accordion-body" style="background-color: rgb(242 244 248)">
-                            <!--begin::Table container-->
+                    <div id="kt_accordion_1_body_3" class="accordion-collapse collapse" aria-labelledby="kt_accordion_1_header_3"
+                         data-bs-parent="#kt_accordion_3">
+                        <div class="accordion-body bg-light">
+                            <!--begin::Form-->
                             <div class="form-group row mb-5">
                                 <div class="col-12">
                                     <label class="form-label">Remark</label>
-                                    <textarea class="form-control" rows="4" cols="50"></textarea>
+                                    <textarea class="form-control" rows="4"></textarea>
                                 </div>
-
-
                             </div>
+
+                            <!--begin::History Table-->
                             <h5>ประวัติการดำเนินงาน (History)</h5>
                             <div class="table-responsive">
-                                <table id="kt_datatable_zero_configuration" class="table  table-bordered gy-5" style="background-color:white !important">
-                                    <thead>
+                                <table class="table table-bordered table-striped">
+                                    <thead class="thead-dark">
                                         <tr class="fw-semibold fs-6 text-muted">
                                             <th>Date / Time</th>
                                             <th>Name</th>
                                             <th>Activity</th>
                                             <th>Remark</th>
-                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -858,31 +814,29 @@
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                           
                                         </tr>
                                         <tr>
                                             <td>Garrett Winters</td>
                                             <td>Accountant</td>
                                             <td>Tokyo</td>
                                             <td>63</td>
-                                           
                                         </tr>
                                         <tr>
                                             <td>Ashton Cox</td>
                                             <td>Junior Technical Author</td>
                                             <td>San Francisco</td>
                                             <td>66</td>
-                                          
                                         </tr>
                                     </tbody>
-                                   
                                 </table>
                             </div>
-                            <!--end::Table container-->
+                            <!--end::History Table-->
                         </div>
                     </div>
                 </div>
             </div>
+            <!--end::Accordion-->
+
         </div>
     </div>
 

@@ -38,7 +38,6 @@
         </div>
         <!--end::Toolbar container-->
     </div>
-
     <!--end::Toolbar-->
     <!--begin::Content-->
     <div id="kt_app_content" class="app-content flex-column-fluid mt-5">
@@ -48,9 +47,8 @@
                 <!--begin::Header-->
                 <div class="card-header border-0 pt-5">
                     <h2 class="align-items-start flex-column">
-                        <span class="fw-bold fs-3 mb-1" style="color: rgb(0 97 175)">รายการงานค้าง (All my pendings)</span>        
+                        <span class="fw-bold fs-3 mb-1" style="color: rgb(0 97 175)">รายการงานค้าง (All my pendings)</span>
                     </h2>
-                   
                 </div>
                 <div class="py-0 mx-5" style="position: relative">
                     <hr class="absolute w-1/4 h-1 bg-orange-default rounded border border-orange-light" style="position: absolute;width: 25%;background-color: rgb(241 90 34);height: 5px; opacity: 1">
@@ -59,75 +57,22 @@
                 <!--end::Header-->
                 <!--begin::Body-->
                 <div class="card-body py-3 d-flex justify-content-between" style="font-size:16px">
-                    <div class="card shadow-sm align-items-start justify-content-between" style="width: 15%; background-color: rgb(0 97 173);color: white">
-                        <div class="p-1" style="font-size: 17px">
-                            รอการ ประเมินความเกี่ยวข้อง
+                    @foreach (var item in new[] { "รอการ ประเมินความเกี่ยวข้อง", "รอการ ให้คำแนะนำจาก SME", "รอการจัดทำ สิ่งที่ต้องปฏิบัติ", "สิ่งที่ต้องดำเนินการ", "ใบอนุญาตที่ต้องดำเนินการ", "อนุมัติ" })
+                    {
+                        <div class="card shadow-sm align-items-start justify-content-between" style="width: 15%; background-color: @(item == "อนุมัติ" ? "#ed3011" : (item.Contains("รอการ") ? "rgb(0 97 173)" : "rgb(28 22 102)"));color: white">
+                            <div class="p-1" style="font-size: 17px">
+                                @item
+                            </div>
+                            <div class="p-1">
+                                @(item == "อนุมัติ" ? "Approval action" : (item.Contains("รอการ") ? "Wait for assessments" : "To-do list action"))
+                            </div>
+                            <div class="mb-2" style="justify-content: center;display: flex;width: 100%;font-size:25px">
+                                -
+                            </div>
                         </div>
-                        <div class="p-1">
-                            Wait for assessments
-                        </div>
-                        <div class="mb-2" style="justify-content: center;display: flex;width: 100%;font-size:25px">
-                            -
-                        </div>
-                    </div>
-                    <div class="card shadow-sm align-items-start justify-content-between" style="width: 15%; background-color: rgb(0 97 173);color: white">
-                        <div class="p-1" style="font-size: 17px">
-                            รอการ ให้คำแนะนำจาก SME
-                        </div>
-                        <div class="p-1">
-                            Wait for SME comment
-                        </div>
-                        <div class="mb-2" style="justify-content: center;display: flex;width: 100%;font-size:25px">
-                            -
-                        </div>
-                    </div>
-                    <div class="card shadow-sm align-items-start justify-content-between" style="width: 15%; background-color:rgb(28 22 102);color: white">
-                        <div class="p-1" style="font-size: 17px">
-                            รอการจัดทำ สิ่งที่ต้องปฏิบัติ
-                        </div>
-                        <div class="p-1">
-                            Wait for action plan
-                        </div>
-                        <div class="mb-2" style="justify-content: center;display: flex;width: 100%;font-size:25px">
-                            -
-                        </div>
-                    </div>
-                    <div class="card shadow-sm align-items-start justify-content-between" style="width: 15%; background-color:rgb(28 22 102);color: white">
-                        <div class="p-1" style="font-size: 17px">
-                            สิ่งที่ต้องดำเนินการ
-                           
-                        </div>
-                        <div class="p-1">
-                            To-do list action
-                        </div>
-                        <div class="mb-2" style="justify-content: center;display: flex;width: 100%;font-size:25px">
-                            -
-                        </div>
-                    </div>
-                    <div class="card shadow-sm align-items-start justify-content-between" style="width: 15%; background-color:rgb(28 22 102);color: white">
-                        <div class="p-1" style="font-size: 17px">
-                            ใบอนุญาตที่ต้องดำเนินการ
-                        </div>
-                        <div class="p-1">
-                            License action
-                        </div>
-                        <div class="mb-2" style="justify-content: center;display: flex;width: 100%;font-size:25px">
-                            -
-                        </div>
-                    </div>
-                    <div class="card shadow-sm align-items-start justify-content-between p" style="width: 15%; background-color: #ed3011;color: white">
-                        <div class="p-1" style="font-size: 17px">
-                            อนุมัติ
-                        </div>
-                        <div class="p-1">
-                            Approval action
-                        </div>
-                        <div class="mb-2" style="justify-content: center;display: flex;width: 100%;font-size:25px">
-                            -
-                        </div>
-                    </div>
+                    }
                 </div>
-                <!--begin::Body-->
+                <!--end::Body-->
             </div>
         </div>
         <!--end::Content container-->
@@ -142,21 +87,20 @@
                 <div class="card-header border-0 pt-5">
                     <h2 class="align-items-start flex-column">
                         <span class="fw-bold fs-3 mb-1" style="color: rgb(0 97 175)">ค้นหา (Search)</span>
-                    </h2>                 
+                    </h2>
                 </div>
                 <div class="py-0 mx-5" style="position: relative">
                     <hr class="absolute w-1/4 h-1 bg-orange-default rounded border border-orange-light" style="position: absolute;width: 25%;background-color: rgb(241 90 34);height: 5px; opacity: 1">
                     <hr class="w-full bg-gray-light h-1 border rounded border-gray-light" style="height: 5px;background-color: rgb(228 231 233)">
                 </div>
                 <div class="card-header border-0 pt-5 d-block">
-                    <div class="d-flex justify-content-between align-items-center ">
+                    <div class="d-flex justify-content-between align-items-center">
                         <div class="form-group mb-5">
                             <label class="form-label">ชื่อกฎหมาย (Name of the Law)</label>
                             <input class="form-control" />
                             <span class="text-danger"></span>
                         </div>
                         <div class="d-flex">
-
                             <a href="#" class="btn btn-sm btn-light-warning" style="margin-right: 10px;background-color: rgb(241 90 34);color: white">
                                 <i class="fas fa-search fs-2" style="color: white"></i>Search
                             </a>
@@ -168,9 +112,6 @@
                     </div>
                     <h2 class="align-items-center d-flex justify-content-between">
                         <span class="fw-bold fs-3 mb-1" style="color: rgb(0 97 175)">กฎหมายที่เกี่ยวข้อง (My related laws)</span>
-                        @* <button type="button" class="btn btn-warning" style="background-color: rgb(241 90 34);color: white" data-bs-toggle="modal" data-bs-target="#kt_modal_1"> *@
-                        @*     Manage Laws *@
-                        @* </button> *@
                     </h2>
                 </div>
 
@@ -179,45 +120,38 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title">โปรดเลือกการจัดการกฎหมาย (Please Select manage law)</h4>
-
                                 <!--begin::Close-->
                                 <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
                                     <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
                                 </div>
                                 <!--end::Close-->
                             </div>
-
                             <div class="modal-body">
                                 <button type="button" class="btn btn-warning w-100 mb-2" style="background-color: rgb(241 90 34);color: white" data-bs-toggle="modal" data-bs-target="#kt_modal_1">
-									<b>Inactivate Law</b>
+                                    <b>Inactivate Law</b>
                                 </button>
-                                <button type="button" class="btn btn-success w-100" style=";color: white" data-bs-toggle="modal" data-bs-target="#kt_modal_1">
-									<b>Reactivate Law</b>
-								</button>
+                                <button type="button" class="btn btn-success w-100" style="color: white" data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+                                    <b>Reactivate Law</b>
+                                </button>
                             </div>
-
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                               
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--end::Header-->
                 <!--begin::Body-->
-               
-               
                 <div class="py-0 mx-5" style="position: relative">
                     <hr class="absolute w-1/4 h-1 bg-orange-default rounded border border-orange-light" style="position: absolute;width: 25%;background-color: rgb(241 90 34);height: 5px; opacity: 1">
                     <hr class="w-full bg-gray-light h-1 border rounded border-gray-light" style="height: 5px;background-color: rgb(228 231 233)">
                 </div>
-                <div class="card-body py-3">             
+                <div class="card-body py-3">
                     <div class="table-responsive">
                         <table id="kt_datatable_both_scrolls" class="table table-striped table-bordered gy-5 gs-7" style="background-color:white !important">
                             <thead>
                                 <tr class="fw-semibold fs-6 text-muted">
                                     <th colspan="5"></th>
-                                    
                                     <th colspan="3">สถานะการจัดการที่ต้องปฏิบัติ (To-do Status)​</th>
                                     <th colspan="3">สถานะใบอนุญาต​ (License Status)​</th>
                                 </tr>
@@ -228,12 +162,11 @@
                                     <th class="min-w-100px">ความสำคัญ</th>
                                     <th class="min-w-100px">สถานะ</th>
                                     <th class="min-w-100px" style="background-color: rgb(240, 89, 36);color: white"> Plan</th>
-                                    <th class="min-w-100px" style="background-color:  rgb(49, 175, 54);color: white">Completed</th>
-                                    <th class="min-w-100px" style="background-color:  rgb(199, 22, 30);color: white">Delayed</th>
-                                    <th class="min-w-100px" style="background-color: rgb(240, 89, 36);color: white">Plan</th>
-                                    <th class="min-w-100px" style="background-color:  rgb(49, 175, 54);color: white">Completed</th>
+                                    <th class="min-w-100px" style="background-color: rgb(49, 175, 54);color: white">Completed</th>
                                     <th class="min-w-100px" style="background-color: rgb(199, 22, 30);color: white">Delayed</th>
-                                  
+                                    <th class="min-w-100px" style="background-color: rgb(240, 89, 36);color: white">Plan</th>
+                                    <th class="min-w-100px" style="background-color: rgb(49, 175, 54);color: white">Completed</th>
+                                    <th class="min-w-100px" style="background-color: rgb(199, 22, 30);color: white">Delayed</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -249,7 +182,6 @@
                                     <td>8422</td>
                                     <td>$320,800</td>
                                     <td>5421</td>
-                                  
                                 </tr>
                                 <tr>
                                     <td>Garrett</td>
@@ -263,13 +195,12 @@
                                     <td>8422</td>
                                     <td>$320,800</td>
                                     <td>5421</td>
-                                   
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <!--begin::Body-->
+                <!--end::Body-->
             </div>
         </div>
         <!--end::Content container-->
@@ -285,7 +216,6 @@
                     <h2 class="align-items-start flex-column">
                         <span class="fw-bold fs-3 mb-1" style="color: rgb(0 97 175)">ใบอนุญาตที่เกี่ยวข้อง (My related license)</span>
                     </h2>
-                   
                 </div>
                 <div class="py-0 mx-5" style="position: relative">
                     <hr class="absolute w-1/4 h-1 bg-orange-default rounded border border-orange-light" style="position: absolute;width: 25%;background-color: rgb(241 90 34);height: 5px; opacity: 1">
@@ -294,24 +224,13 @@
                 <!--end::Header-->
                 <!--begin::Body-->
                 <div class="card-body py-3">
-                    <!--begin::Table container-->
-                   
                     <div class="table-responsive">
-                        <table id="kt_datatable_one_configuration" class="table  table-bordered gy-5" style="background-color:white !important">
+                        <table id="kt_datatable_one_configuration" class="table table-bordered gy-5" style="background-color:white !important">
                             <thead>
                                 <tr class="fw-semibold fs-6 text-muted">
-                                    <th>
-                                        ใบอนุญาต
-                                        (License)
-                                    </th>
-                                    <th>
-                                        วันที่ต้องดําเนินการตามกฎหมาย
-                                        Legal due date
-                                    </th>
-                                    <th>
-                                        สถานะ
-                                        (Status)
-                                    </th>
+                                    <th>ใบอนุญาต (License)</th>
+                                    <th>วันที่ต้องดําเนินการตามกฎหมาย (Legal due date)</th>
+                                    <th>สถานะ (Status)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -319,42 +238,22 @@
                                     <td>Tiger Nixon</td>
                                     <td>2009/01/12</td>
                                     <td>Edinburgh</td>
-                                    
                                 </tr>
                                 <tr>
                                     <td>Garrett Winters</td>
                                     <td>2009/01/12</td>
                                     <td>Tokyo</td>
-                                   
                                 </tr>
                                 <tr>
                                     <td>Ashton Cox</td>
                                     <td>2009/01/12</td>
                                     <td>San Francisco</td>
-                                   
                                 </tr>
                             </tbody>
-                            @* <tfoot> *@
-                            @*     <tr> *@
-                            @*         <th> *@
-                            @*             ใบอนุญาต *@
-                            @*             (License) *@
-                            @*         </th> *@
-                            @*         <th> *@
-                            @*             วันที่ต้องดําเนินการตามกฎหมาย *@
-                            @*             Legal due date *@
-                            @*         </th> *@
-                            @*         <th> *@
-                            @*             สถานะ *@
-                            @*             (Status) *@
-                            @*         </th> *@
-                            @*     </tr> *@
-                            @* </tfoot> *@
                         </table>
                     </div>
-                    <!--end::Table container-->
                 </div>
-                <!--begin::Body-->
+                <!--end::Body-->
             </div>
         </div>
         <!--end::Content container-->
@@ -366,21 +265,20 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#kt_datatable_zero_configuration").DataTable({
-               "scrollX": true,
-               "lengthChange": false, // ปิดการเลือกจำนวนแถวต่อหน้า
-                   "info": false // ปิดข้อความ
+                "scrollX": true,
+                "lengthChange": false, // ปิดการเลือกจำนวนแถวต่อหน้า
+                "info": false // ปิดข้อความ
             });
             $("#kt_datatable_one_configuration").DataTable({
                 "scrollX": true,
-              "lengthChange": false, // ปิดการเลือกจำนวนแถวต่อหน้า
-                   "info": false // ปิดข้อความ
+                "lengthChange": false, // ปิดการเลือกจำนวนแถวต่อหน้า
+                "info": false // ปิดข้อความ
             });
             $("#kt_datatable_both_scrolls").DataTable({
-            "scrollX": true,
-              "lengthChange": false, // ปิดการเลือกจำนวนแถวต่อหน้า
-                   "info": false // ปิดข้อความ
-              });
+                "scrollX": true,
+                "lengthChange": false, // ปิดการเลือกจำนวนแถวต่อหน้า
+                "info": false // ปิดข้อความ
+            });
         });
-
     </script>
 }
